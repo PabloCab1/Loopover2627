@@ -1,7 +1,7 @@
 # Spec: `Estado` — modelo del tablero 4×4
 
 > **Tarea:** 1 · **Archivos:** `src/Estado.java` (+ `src/Sucesor.java`, consumido por `verify`)
-> **Estado:** 📝 Borrador · **Última actualización:** 2026-10-08
+> **Estado:** ✅ Aprobada (Tarea 1 implementada y verificada) · **Última actualización:** 2026-10-08
 > **Derivada de:** Javadoc y TODO del esqueleto de `Estado.java`
 
 ## 1. Contexto y objetivo
@@ -144,7 +144,11 @@ resultado = (bb & ~mascaraColumna) | rotada
 - **CA-1.3**: `ficha(i)` devuelve el valor del nibble `i`; `ficha(i/4, i%4)` coincide con `ficha(i)` para todo `i`.
 - **CA-1.4**: `bitboard()` del estado resuelto es `0xFEDCBA98_76543210L`.
 - **CA-1.5**: `sucesores()` devuelve exactamente 32 elementos, con acciones `ACCIONES[0..31]`, coste `1.0f` y estados distintos del original.
-- **CA-1.6**: para cualquier acción, `aplicar(a)` no modifica el estado receptor (inmutabilidad) y `aplicar(a).aplicar(inversa(a))` recupera el original, siendo `inversa` la acción misma con signo invertido (mismo fila/columna).
+- **CA-1.6**: para cualquier acción, `aplicar(a)` no modifica el estado receptor
+  (inmutabilidad). Además **toda acción tiene orden 7**: aplicar la misma acción
+  7 veces seguidas devuelve el estado original (`a⁷ = identidad`), por lo que la
+  inversa de `a` es aplicarla **6 veces más**. La acción con el signo invertido
+  **no** es la inversa (ver D4).
 - **CA-1.7**: `00+` desplaza la fila 0 una casilla a la derecha con retorno circular: las fichas de la fila pasan `0→1→2→3→0`.
 - **CA-1.8**: `00+` sobre una fila afectada por columna: la columna se desplaza **después** de la fila (comprobar con un tablero asimétrico donde fila y columna se solapen en la casilla (0,0)).
 - **CA-1.9**: `accionComoTexto` y `accionDesde` son inversas para las 32 acciones: `accionDesde(accionComoTexto(a)) == a` para `a ∈ [0,31]`.
@@ -164,6 +168,11 @@ resultado = (bb & ~mascaraColumna) | rotada
 - **D1**: inmutabilidad — `aplicar` devuelve un `Estado` nuevo (necesario para
   `Visitados` y para reutilizar nodos). Decidido por el esqueleto (`final long bitboard`).
 - **D2**: el coste de toda acción es `1.0f` (métrica de movimientos unitarios).
+- **D4**: una acción encadenada afecta a las 7 casillas de su fila ∪ su columna
+  (se solapan en la casilla (fila, columna)) y actúa como **un ciclo de orden 7**
+  sobre ellas; las 9 casillas restantes quedan fijas. Corregido el 2026-10-08
+  tras verificación empírica: la acción con signo invertido **no** compone a
+  identidad (fila y columna no conmutan en la casilla compartida).
 - **A1**: el estado de entrada al CLI siempre tiene las 16 fichas distintas
   (el puzzle no tiene piezas repetidas); se valida igualmente.
 

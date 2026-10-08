@@ -55,7 +55,7 @@ La solución se imprime como secuencia de acciones, por ejemplo `21+,03-,10+`.
 
 | Tarea | Alcance | Estado |
 |---|---|---|
-| 1 | `Estado` — bitboard, acciones, sucesores | ⬜ Pendiente |
+| 1 | `Estado` — bitboard, acciones, sucesores | ✅ Completada |
 | 2 | `Busqueda`, `Nodo`, `Frontera`, `Visitados` | ⬜ Pendiente |
 | 3 | `PBD`, `Heuristicas`, `HeuristicasPBD` | ⬜ Pendiente |
 

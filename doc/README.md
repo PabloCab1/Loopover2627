@@ -18,7 +18,7 @@ Toda la documentación del proyecto vive aquí, en formato Markdown, siguiendo
 
 | Spec | Tarea | Estado | Código |
 |---|---|---|---|
-| `spec-estado` | Tarea 1 | 📝 Borrador | ⬜ TODO en `src/Estado.java` |
+| `spec-estado` | Tarea 1 | ✅ Aprobada | ✅ Implementado y verificado (`src/Estado.java`) |
 | `spec-busqueda` | Tarea 2 | 📝 Borrador | ⬜ TODO en `Busqueda`, `Nodo`, `Frontera`, `Visitados` |
 | `spec-pbd` | Tarea 3 | 📝 Borrador | ⬜ TODO en `PBD`, `Heuristicas`, `HeuristicasPBD` |
 
