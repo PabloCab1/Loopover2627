@@ -1,0 +1,16 @@
+# Temporales de edición de documentos
+*~
+*.tmp
+*.bak
+*.swp
+*.swo
+~$*
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Exportaciones derivadas de los .md (si se generan localmente)
+*.pdf
+*.html
