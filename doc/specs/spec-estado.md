@@ -159,7 +159,8 @@ resultado = (bb & ~mascaraColumna) | rotada
 
 ## 8. Estrategia de verificación
 
-- Tests unitarios por CA (JUnit) si se añade infraestructura de tests.
+- Tests unitarios JUnit 5 en `src/test/EstadoTest.java` (30 tests, uno por CA o
+  grupo de CA): ejecutar con `mvn test`.
 - Manual: `mvn -q package` y `java -jar target/loopover.jar verify ...` con
   estados conocidos (resuelto, tablero asimétrico, una sola acción).
 

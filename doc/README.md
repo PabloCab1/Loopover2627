@@ -31,3 +31,6 @@ Leyenda: 📝 escrita · ✅ aprobada (spec cerrada) · ⬜ sin implementar · �
 3. **Cada criterio de aceptación es verificable.** Si no se puede comprobar, no es un criterio.
 4. **Los Javadoc del código citan la spec** y viceversa (nombre de archivo + sección).
 5. Los `.md` nuevos se colocan en `doc/` (o `doc/specs/`), nunca en la raíz salvo el `README.md`.
+6. Los tests JUnit viven en `src/test/` (el pom los excluye de la compilación
+   principal y de `loopover.jar`; se ejecutan con `mvn test`). Un test nuevo
+   referencia el `CA-N-M` de su spec en el nombre o el Javadoc del método.
